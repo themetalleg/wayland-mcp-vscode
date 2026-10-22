@@ -1,0 +1,76 @@
+{
+  "name": "wayland-mcp-controls",
+  "displayName": "Wayland MCP Controls",
+  "description": "Start, stop, and manage the Wayland MCP server from the VS Code Activity Bar.",
+  "version": "0.1.0",
+  "publisher": "themetalleg",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/themetalleg/wayland-mcp-vscode.git"
+  },
+  "engines": {
+    "vscode": "^1.102.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onView:waylandMcp.controls"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Wayland MCP Controls",
+      "properties": {
+        "waylandMcpControls.serverId": {
+          "type": "string",
+          "default": "mcp.config.usrlocal.wayland",
+          "description": "VS Code MCP definition ID to control. The default matches the user-profile server named 'wayland'."
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "waylandMcpControls.start",
+        "title": "Wayland MCP: Start Server"
+      },
+      {
+        "command": "waylandMcpControls.stop",
+        "title": "Wayland MCP: Stop Server"
+      },
+      {
+        "command": "waylandMcpControls.restart",
+        "title": "Wayland MCP: Restart Server"
+      },
+      {
+        "command": "waylandMcpControls.listServers",
+        "title": "Wayland MCP: Show VS Code MCP Server List"
+      },
+      {
+        "command": "waylandMcpControls.openConfiguration",
+        "title": "Wayland MCP: Open User MCP Configuration"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "waylandMcp",
+          "title": "Wayland MCP",
+          "icon": "media/wayland.svg"
+        }
+      ]
+    },
+    "views": {
+      "waylandMcp": [
+        {
+          "id": "waylandMcp.controls",
+          "name": "Server Controls"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "test": "node --test"
+  }
+}
